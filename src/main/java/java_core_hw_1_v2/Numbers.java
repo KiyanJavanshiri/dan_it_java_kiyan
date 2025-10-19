@@ -23,5 +23,7 @@ public class Numbers {
                 isGuessed = true;
             }
         }
+
+        scanner.close();
     }
 }
