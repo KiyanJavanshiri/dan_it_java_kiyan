@@ -85,6 +85,7 @@ public class TaskManager {
             if(schedule[i][0].toLowerCase().equals(day)) {
                 dayWithActivity[0] = schedule[i][0];
                 dayWithActivity[1] = schedule[i][1];
+                break;
             }
         }
 
