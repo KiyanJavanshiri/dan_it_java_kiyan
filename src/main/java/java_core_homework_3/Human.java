@@ -121,9 +121,9 @@ public class Human {
     @Override
     public String toString() {
         return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
+                "name='" + (name != null ? name : "null") + '\'' +
+                ", surname='" + (surname != null ? surname : "null") + '\'' +
+                ", year=" + (year != 0 ? year : "null") +
                 ", iq=" + (iq != 0 ? iq : "null") +
                 ", schedule=" + (schedule != null ? Arrays.toString(schedule) : "null") +
                 '}';
