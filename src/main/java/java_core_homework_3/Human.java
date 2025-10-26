@@ -5,12 +5,11 @@ import java.util.Objects;
 
 public class Human {
     private String name;
+    private Family family;
     private String surname;
     private int year;
     private int iq;
     private Pet pet;
-    private Human mother;
-    private Human father;
     private String[][] schedule;
 
     public Human() {
@@ -23,32 +22,32 @@ public class Human {
         this.year = year;
     }
 
-    public Human(String name, String surname, int year, Human mother, Human father) {
+    public Human(String name, String surname, int year, Pet pet, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
-        this.mother = mother;
-        this.father = father;
-    }
-
-    public Human(String name, String surname, int year, Human mother, Human father, Pet pet, int iq, String[][] schedule) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.mother = mother;
-        this.father = father;
         this.iq = iq;
         this.pet = pet;
         this.schedule = schedule;
     }
 
     public void greetPet() {
-        System.out.println("Hello, " + pet.getNickname());
+        if(!(pet == null)) {
+            System.out.println("Hello, " + pet.getNickname());
+        }
     }
 
     public void describePet() {
-        String tricky = pet.getTrickLevel() <= 50 ? "almost not tricky" : "very tricky";
-        System.out.println("I have a/an " + pet.getSpecies() + ", his/her " + pet.getAge() + " years old, he/she is " + tricky);
+        if(!(pet == null)) {
+            String tricky = pet.getTrickLevel() <= 50 ? "almost not tricky" : "very tricky";
+            System.out.println("I have a/an " + pet.getSpecies() + ", his/her " + pet.getAge() + " years old, he/she is " + tricky);
+        }
+    }
+
+    public void feedPet() {
+        if(!(pet == null)) {
+            System.out.println("I'm feeding my pet " + pet.getNickname());
+        }
     }
 
     public String getSurname() {
@@ -57,14 +56,6 @@ public class Human {
 
     public String getName() {
         return name;
-    }
-
-    public Human getFather() {
-        return father;
-    }
-
-    public Human getMother() {
-        return mother;
     }
 
     public int getIq() {
@@ -83,6 +74,10 @@ public class Human {
         return schedule;
     }
 
+    public Family getFamily() {
+        return family;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -91,16 +86,8 @@ public class Human {
         this.name = name;
     }
 
-    public void setFather(Human father) {
-        this.father = father;
-    }
-
     public void setIq(int iq) {
         this.iq = iq;
-    }
-
-    public void setMother(Human mother) {
-        this.mother = mother;
     }
 
     public void setPet(Pet pet) {
@@ -115,16 +102,20 @@ public class Human {
         this.schedule = schedule;
     }
 
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(pet, human.pet) && Objects.equals(mother, human.mother) && Objects.equals(father, human.father) && Objects.deepEquals(schedule, human.schedule);
+        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(pet, human.pet) && Objects.deepEquals(schedule, human.schedule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, year, iq, pet, mother, father, Arrays.deepHashCode(schedule));
+        return Objects.hash(name, surname, year, iq, pet, Arrays.deepHashCode(schedule));
     }
 
     @Override
@@ -133,10 +124,8 @@ public class Human {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
-                ", iq=" + iq +
-                ", mother=" + mother +
-                ", father=" + father +
-                ", pet=" + pet +
+                ", iq=" + (iq != 0 ? iq : "null") +
+                ", schedule=" + (schedule != null ? Arrays.toString(schedule) : "null") +
                 '}';
     }
 }

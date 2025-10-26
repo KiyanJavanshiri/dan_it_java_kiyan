@@ -85,22 +85,21 @@ public class Pet {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return age == pet.age && trickLevel == pet.trickLevel && Objects.equals(species, pet.species) && Objects.equals(nickname, pet.nickname) && Objects.deepEquals(habits, pet.habits);
+        return age == pet.age && trickLevel == pet.trickLevel && Objects.equals(species, pet.species) && Objects.equals(nickname, pet.nickname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(species, nickname, age, trickLevel, Arrays.hashCode(habits));
+        return Objects.hash(species, nickname, age, trickLevel);
     }
 
     @Override
     public String toString() {
         return species + "{" +
-                "species='" + species + '\'' +
                 ", nickname='" + nickname + '\'' +
-                ", age=" + age +
-                ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
+                ", age=" + (age != 0 ? age : "null") +
+                ", trickLevel=" + (trickLevel != 0 ? trickLevel : "null") +
+                ", habits=" + (habits != null ? Arrays.toString(habits) : null) +
                 '}';
     }
 }
