@@ -125,7 +125,7 @@ public class Human {
                 ", surname='" + (surname != null ? surname : "null") + '\'' +
                 ", year=" + (year != 0 ? year : "null") +
                 ", iq=" + (iq != 0 ? iq : "null") +
-                ", schedule=" + (schedule != null ? Arrays.toString(schedule) : "null") +
+                ", schedule=" + (schedule != null ? Arrays.deepToString(schedule) : "null") +
                 '}';
     }
 }
