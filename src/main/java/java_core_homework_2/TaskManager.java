@@ -6,48 +6,31 @@ public class TaskManager {
     public static void main(String[] args) {
         String[][] schedule = createSchedule();
         Scanner scanner = new Scanner(System.in);
-        boolean isFinish = false;
 
-        while (!isFinish) {
-            String[] activity;
+        while (true) {
+            String activity;
             System.out.print("Please, input the day of the week: ");
             String dayOfTheWeek = scanner.nextLine().trim().toLowerCase();
 
             switch (dayOfTheWeek) {
                 case "monday":
-                    activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
-                    break;
                 case "tuesday":
-                    activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
-                    break;
                 case "wednesday":
-                    activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
-                    break;
                 case "thursday":
-                    activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
-                    break;
                 case "friday":
-                    activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
-                    break;
                 case "saturday":
-                    activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
-                    break;
                 case "sunday":
                     activity = getActivity(dayOfTheWeek, schedule);
-                    System.out.println("Your tasks for " + activity[0] + ": " + activity[1]);
+                    System.out.println("Your tasks for " + dayOfTheWeek + ": " + activity);
                     break;
                 case "exit":
-                    isFinish = true;
                     break;
                 default:
                     System.out.println("Sorry, I don't understand you, please try again.");
             }
+
+            if(dayOfTheWeek.equals("exit")) break;
+
         }
 
         scanner.close();
@@ -79,16 +62,15 @@ public class TaskManager {
         return schedule;
     }
 
-    public static String[] getActivity(String day, String[][] schedule) {
-        String[] dayWithActivity = new String[2];
+    public static String getActivity(String day, String[][] schedule) {
+        String activity = "";
         for (int i = 0; i < schedule.length; i++) {
             if(schedule[i][0].toLowerCase().equals(day)) {
-                dayWithActivity[0] = schedule[i][0];
-                dayWithActivity[1] = schedule[i][1];
+                activity = schedule[i][1];
                 break;
             }
         }
 
-        return dayWithActivity;
+        return activity;
     }
 }
