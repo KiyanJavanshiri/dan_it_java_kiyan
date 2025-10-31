@@ -14,43 +14,42 @@ public class AreaShooting {
         };
         int randomRow = (int) (Math.random() * 5 + 1);
         int randomColumn = (int) (Math.random() * 5 + 1);
-        boolean isHit = false;
+        int minRowNumber = 1;
+        int maxRowNumber = 5;
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("All Set. Get ready to rumble!.");
 
-        while (!isHit) {
+        while (true) {
             int rowNumber = 0, columnNumber = 0;
-            boolean isWrittenRow = false;
-            boolean isWrittenColumn = false;
-            while (!isWrittenRow) {
-                System.out.print("Enter row number: ");
+            while (true) {
+                System.out.print("Enter row number between 1 to 5: ");
                 if(scanner.hasNextInt()) {
                     rowNumber = scanner.nextInt();
-                    if(rowNumber < 1 || rowNumber > 5) {
+                    if(rowNumber < minRowNumber || rowNumber > maxRowNumber) {
                         System.out.println("Enter number in the range from 1 to 5 inclusive!");
                     } else {
-                        isWrittenRow = true;
+                        break;
                     }
                 } else {
-                    System.out.println("Enter number!");
+                    System.out.println("Enter number (1 - 5)!");
                     scanner.nextLine();
                 }
             }
 
             scanner.nextLine();
 
-            while (!isWrittenColumn) {
-                System.out.print("Enter column number: ");
+            while (true) {
+                System.out.print("Enter column number between 1 to 5: ");
                 if(scanner.hasNextInt()) {
                     columnNumber = scanner.nextInt();
-                    if(columnNumber < 1 || columnNumber > 5) {
+                    if(columnNumber < minRowNumber || columnNumber > maxRowNumber) {
                         System.out.println("Enter number in the range from 1 to 5 inclusive!");
                     } else {
-                        isWrittenColumn = true;
+                        break;
                     }
                 } else {
-                    System.out.println("Enter number!");
+                    System.out.println("Enter number (1 - 5)!");
                     scanner.nextLine();
                 }
             }
@@ -58,7 +57,7 @@ public class AreaShooting {
             if(rowNumber == randomRow && columnNumber == randomColumn) {
                 System.out.println("You have won!");
                 gameBoard[rowNumber - 1][columnNumber - 1] = "x";
-                isHit = true;
+                break;
             } else {
                 gameBoard[rowNumber - 1][columnNumber - 1] = "*";
             }
@@ -66,6 +65,10 @@ public class AreaShooting {
             for (int i = 0; i < gameBoard.length; i++) {
                 System.out.println(Arrays.toString(gameBoard[i]));
             }
+        }
+
+        for (int i = 0; i < gameBoard.length; i++) {
+            System.out.println(Arrays.toString(gameBoard[i]));
         }
 
         scanner.close();
