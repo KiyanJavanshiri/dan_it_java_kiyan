@@ -6,6 +6,13 @@ public class DomesticCat extends Pet implements Foulable {
         this.setSpecies(Species.CAT);
     }
 
+    public DomesticCat(String nickname) {
+        super(nickname);
+        this.setSpecies(Species.CAT);
+    }
+
+    public DomesticCat() {};
+
     @Override
     public void respond() {
         System.out.println("Meow Meow Meow");

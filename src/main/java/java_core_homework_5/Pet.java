@@ -17,8 +17,7 @@ public abstract class Pet {
         this.habits = habits;
     }
 
-    public Pet(Species species, String nickname) {
-        this.species = species;
+    public Pet(String nickname) {
         this.nickname = nickname;
     }
 

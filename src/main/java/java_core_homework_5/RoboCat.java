@@ -6,6 +6,13 @@ public class RoboCat extends Pet {
         this.setSpecies(Species.ROBOCAT);
     }
 
+    public RoboCat(String nickname) {
+        super(nickname);
+        this.setSpecies(Species.ROBOCAT);
+    }
+
+    public RoboCat() {};
+
     @Override
     public void respond() {
         System.out.println("whrrr–meowww–tchk!");

@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
 //        Example usage of methods
         String[][] schedule = createSchedule();
-        Pet pet1 = new Pet();
-        Pet pet2 = new Pet(Species.DOG, "Jack");
-        Pet pet3 = new Pet(Species.CAT, "Gwen", 2, 70, new String[] {"eat", "drink", "sleep"});
+        DomesticCat pet1 = new DomesticCat();
+        Dog pet2 = new Dog("Jack");
+        DomesticCat pet3 = new DomesticCat("Gwen", 2, 70, new String[] {"eat", "drink", "sleep"});
 
         Human person1 = new Human();
         Human person2 = new Human("Jack", "Hamilton", 24);
@@ -19,7 +19,7 @@ public class Main {
         System.out.println("---------------------------");
 //        Creating family with child
 
-        Pet jesse = new Pet(Species.CAT, "Jesse", 2, 70, new String[] {"eat", "drink", "sleep"});
+        DomesticCat jesse = new DomesticCat("Jesse", 2, 70, new String[] {"eat", "drink", "sleep"});
 
         Human mother = new Human("Jane", "Karleone", 1975, null, 80, schedule);
         Human father = new Human("Michael", "Jackson", 1974, null, 85, schedule);

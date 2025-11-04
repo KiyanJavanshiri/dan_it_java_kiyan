@@ -6,6 +6,13 @@ public class Dog extends Pet implements Foulable {
         this.setSpecies(Species.DOG);
     }
 
+    public Dog(String nickname) {
+        super(nickname);
+        this.setSpecies(Species.DOG);
+    }
+
+    public Dog() {};
+
     @Override
     public void respond() {
         System.out.println("Bark Bark Bark");

@@ -6,6 +6,13 @@ public class Fish extends Pet {
         this.setSpecies(Species.FISH);
     }
 
+    public Fish(String nickname) {
+        super(nickname);
+        this.setSpecies(Species.FISH);
+    }
+
+    public Fish() {};
+
     @Override
     public void respond() {
         System.out.println("*bubble bubble bubble*");
