@@ -3,10 +3,10 @@ package java_core_homework_4;
 public class Main {
     public static void main(String[] args) {
 //        Example usage of methods
-        String[][] schedule = {{"Monday", "yoga"}, {"Friday", "reading"}};
+        String[][] schedule = createSchedule();
         Pet pet1 = new Pet();
-        Pet pet2 = new Pet("Dog", "Jack");
-        Pet pet3 = new Pet("Cat", "Gwen", 2, 70, new String[] {"eat", "drink", "sleep"});
+        Pet pet2 = new Pet(Species.DOG, "Jack");
+        Pet pet3 = new Pet(Species.CAT, "Gwen", 2, 70, new String[] {"eat", "drink", "sleep"});
 
         Human person1 = new Human();
         Human person2 = new Human("Jack", "Hamilton", 24);
@@ -19,7 +19,7 @@ public class Main {
         System.out.println("---------------------------");
 //        Creating family with child
 
-        Pet jesse = new Pet("Cat", "Jesse", 2, 70, new String[] {"eat", "drink", "sleep"});
+        Pet jesse = new Pet(Species.CAT, "Jesse", 2, 70, new String[] {"eat", "drink", "sleep"});
 
         Human mother = new Human("Jane", "Karleone", 1975, null, 80, schedule);
         Human father = new Human("Michael", "Jackson", 1974, null, 85, schedule);
@@ -49,5 +49,31 @@ public class Main {
         System.out.println(family.deleteChild(1));
         System.out.println(family.toString());
         System.out.println(family.countFamily());
+    }
+
+    public static String[][] createSchedule() {
+        String[][] schedule = new String[7][2];
+        schedule[0][0] = DayOfWeek.MONDAY.name();
+        schedule[0][1] = "Go to gym";
+
+        schedule[1][0] = DayOfWeek.TUESDAY.name();
+        schedule[1][1] = "Attend meeting";
+
+        schedule[2][0] = DayOfWeek.WEDNESDAY.name();
+        schedule[2][1] = "Work on project";
+
+        schedule[3][0] = DayOfWeek.THURSDAY.name();
+        schedule[3][1] = "Study Java";
+
+        schedule[4][0] = DayOfWeek.FRIDAY.name();
+        schedule[4][1] = "Watch movie";
+
+        schedule[5][0] = DayOfWeek.SATURDAY.name();
+        schedule[5][1] = "Go hiking";
+
+        schedule[6][0] = DayOfWeek.SUNDAY.name();
+        schedule[6][1] = "Rest";
+
+        return schedule;
     }
 }

@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Pet {
-    private String species;
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -18,7 +18,7 @@ public class Pet {
         this.habits = habits;
     }
 
-    public Pet(String species, String nickname) {
+    public Pet(Species species, String nickname) {
         this.species = species;
         this.nickname = nickname;
     }
@@ -38,7 +38,7 @@ public class Pet {
     }
 
     public String getSpecies() {
-        return species;
+        return species.getPetSpecies();
     }
 
     public String[] getHabits() {
@@ -57,7 +57,7 @@ public class Pet {
         this.nickname = nickname;
     }
 
-    public void setSpecies(String species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 
@@ -95,7 +95,7 @@ public class Pet {
 
     @Override
     public String toString() {
-        return species + "{" +
+        return species.getPetSpecies() + "{" +
                 ", nickname='" + nickname + '\'' +
                 ", age=" + (age != 0 ? age : "null") +
                 ", trickLevel=" + (trickLevel != 0 ? trickLevel : "null") +
