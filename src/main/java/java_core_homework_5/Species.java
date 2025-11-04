@@ -3,6 +3,8 @@ package java_core_homework_5;
 public enum Species {
     CAT("Cat"),
     DOG("Dog"),
+    ROBOCAT("RoboCat"),
+    FISH("Fish"),
     OWL("Owl");
 
     private final String petSpecies;

@@ -3,15 +3,14 @@ package java_core_homework_5;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Pet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
-        this.species = species;
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -73,13 +72,7 @@ public class Pet {
         System.out.println("I'm eating!");
     }
 
-    public void respond() {
-        System.out.println("Hello, owner. I am - " + this.nickname + "." + " I miss you!");
-    }
-
-    public void foul() {
-        System.out.println("You need to cover your tracks well...");
-    }
+    public abstract void respond();
 
     @Override
     public boolean equals(Object o) {
