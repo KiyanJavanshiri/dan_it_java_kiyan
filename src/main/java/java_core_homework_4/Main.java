@@ -41,8 +41,8 @@ public class Main {
         jesse.foul();
         jesse.eat();
 
-        Human child2 = new Human("Olena", "Karleone", 2004, jesse, 58, schedule);
-        family.addChild(child2);
+//        Human child2 = new Human("Olena", "Karleone", 2004, jesse, 58, schedule);
+//        family.addChild(child2);
 
         System.out.println(family.toString());
         System.out.println(family.countFamily());
