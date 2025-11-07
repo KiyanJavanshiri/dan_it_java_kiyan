@@ -11,7 +11,9 @@ public class Dog extends Pet implements Foulable {
         this.setSpecies(Species.DOG);
     }
 
-    public Dog() {};
+    public Dog() {
+        super();
+    };
 
     @Override
     public void respond() {

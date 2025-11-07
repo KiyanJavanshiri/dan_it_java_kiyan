@@ -11,7 +11,9 @@ public class Fish extends Pet {
         this.setSpecies(Species.FISH);
     }
 
-    public Fish() {};
+    public Fish() {
+        super();
+    };
 
     @Override
     public void respond() {

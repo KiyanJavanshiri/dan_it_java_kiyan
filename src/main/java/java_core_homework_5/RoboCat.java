@@ -11,7 +11,9 @@ public class RoboCat extends Pet {
         this.setSpecies(Species.ROBOCAT);
     }
 
-    public RoboCat() {};
+    public RoboCat() {
+        super();
+    };
 
     @Override
     public void respond() {
