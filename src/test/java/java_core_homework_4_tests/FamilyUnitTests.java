@@ -4,7 +4,7 @@ import java_core_homework_4.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UnitTests {
+public class FamilyUnitTests {
     @Test
     public void PetToString() {
         Pet somePet = new Pet(Species.DOG, "Nick", 10, 80, new String[] {"eat", "drink", "sleep"});
