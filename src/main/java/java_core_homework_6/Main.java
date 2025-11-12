@@ -32,7 +32,9 @@ public class Main {
         Human father = new Man("Michael", "Jackson", 1974, null, 85, schedule);
 
         Family family = new Family(mother, father);
-        family.setPet(jesse);
+        Set<Pet> familyPets = new HashSet<>();
+        familyPets.add(jesse);
+        family.setPet(familyPets);
 
         Human child1 = new Man("Misha", "Karleone", 2000, jesse, 68, schedule);
         family.addChild(child1);

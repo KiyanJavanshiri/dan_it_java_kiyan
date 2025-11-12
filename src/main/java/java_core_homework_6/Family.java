@@ -3,12 +3,13 @@ package java_core_homework_6;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Family {
     private Human mother;
     private Human father;
     private List<Human> children;
-    private Pet pet;
+    private Set<Pet> pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
@@ -19,7 +20,7 @@ public class Family {
         this.father.setFamily(this);
     }
 
-    public Pet getPet() {
+    public Set<Pet> getPet() {
         return pet;
     }
 
@@ -45,7 +46,7 @@ public class Family {
         this.father.setFamily(this);
     }
 
-    public void setPet(Pet pet) {
+    public void setPet(Set<Pet> pet) {
         this.pet = pet;
     }
 
