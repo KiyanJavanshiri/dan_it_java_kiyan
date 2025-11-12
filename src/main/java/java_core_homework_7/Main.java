@@ -16,8 +16,8 @@ public class Main {
         DomesticCat pet = new DomesticCat("Gwen", 2, 70, petHabits);
 
         Human person1 = new Human();
-        Human person2 = new Man("Jack", "Hamilton", 24);
-        Human person3 = new Woman("Lisa", "Hamilton", 40, pet, 90, schedule);
+        Human person2 = new Man("Jack", "Hamilton");
+        Human person3 = new Woman("Lisa", "Hamilton", pet, 90, schedule);
 
         System.out.println(person1);
         System.out.println(person2);
@@ -28,15 +28,15 @@ public class Main {
         // Creating family with child
         DomesticCat jesse = new DomesticCat("Jesse", 2, 70, petHabits);
 
-        Human mother = new Woman("Jane", "Karleone", 1975, null, 80, schedule);
-        Human father = new Man("Michael", "Jackson", 1974, null, 85, schedule);
+        Human mother = new Woman("Jane", "Karleone", null, 80, schedule);
+        Human father = new Man("Michael", "Jackson", null, 85, schedule);
 
         Family family = new Family(mother, father);
         Set<Pet> familyPets = new HashSet<>();
         familyPets.add(jesse);
         family.setPet(familyPets);
 
-        Human child1 = new Man("Misha", "Karleone", 2000, jesse, 68, schedule);
+        Human child1 = new Man("Misha", "Karleone", jesse, 68, schedule);
         family.addChild(child1);
 
         System.out.println(child1);
@@ -54,6 +54,7 @@ public class Main {
         System.out.println(family.deleteChild(1));
         System.out.println(family);
         System.out.println(family.countFamily());
+        System.out.println(father.describeAge());
     }
 
     public static Map<String, String> createSchedule() {

@@ -7,12 +7,12 @@ public final class Woman extends Human {
         super();
     }
 
-    public Woman(String name, String surname, int year) {
-        super(name, surname, year);
+    public Woman(String name, String surname) {
+        super(name, surname);
     }
 
-    public Woman(String name, String surname, int year, Pet pet, int iq, Map<String, String> schedule) {
-        super(name, surname, year, pet, iq, schedule);
+    public Woman(String name, String surname, Pet pet, int iq, Map<String, String> schedule) {
+        super(name, surname, pet, iq, schedule);
     }
 
     @Override

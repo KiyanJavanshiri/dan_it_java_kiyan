@@ -1,5 +1,8 @@
 package java_core_homework_7;
 
+import java.time.Period;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Objects;
 
@@ -7,7 +10,7 @@ public class Human {
     private String name;
     private Family family;
     private String surname;
-    private int year;
+    private LocalDateTime birthDate;
     private int iq;
     private Pet pet;
     private Map<String, String> schedule;
@@ -16,16 +19,18 @@ public class Human {
 
     }
 
-    public Human(String name, String surname, int year) {
+    public Human(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = LocalDateTime.now();
     }
 
-    public Human(String name, String surname, int year, Pet pet, int iq, Map<String, String> schedule) {
+    public Human(String name, String surname, Pet pet, int iq, Map<String, String> schedule) {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = LocalDateTime.now();
+//        TODO: for describeAge method usage
+//        this.birthDate = LocalDateTime.of(2024, 10, 2, 14, 50);
         this.iq = iq;
         this.pet = pet;
         this.schedule = schedule;
@@ -50,6 +55,12 @@ public class Human {
         }
     }
 
+    public String describeAge() {
+        Period periodOfLiving = Period.between(this.birthDate.toLocalDate(), LocalDateTime.now().toLocalDate());
+        return "Period of living:\nYears: " + periodOfLiving.getYears() + "\n" + "Months: " + periodOfLiving.getMonths() + "\n" + "Days: " + periodOfLiving.getDays();
+    }
+
+
     public String getSurname() {
         return surname;
     }
@@ -62,8 +73,8 @@ public class Human {
         return iq;
     }
 
-    public int getYear() {
-        return year;
+    public LocalDateTime getBirthDate() {
+        return birthDate;
     }
 
     public Pet getPet() {
@@ -94,8 +105,8 @@ public class Human {
         this.pet = pet;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setBirthDate(LocalDateTime date) {
+        this.birthDate = date;
     }
 
     public void setSchedule(Map<String, String> schedule) {
@@ -110,12 +121,12 @@ public class Human {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return year == human.year && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(pet, human.pet) && Objects.deepEquals(schedule, human.schedule);
+        return birthDate == human.birthDate && iq == human.iq && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(pet, human.pet) && Objects.deepEquals(schedule, human.schedule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, year, iq, pet, schedule);
+        return Objects.hash(name, surname, birthDate, iq, pet, schedule);
     }
 
     @Override
@@ -123,7 +134,7 @@ public class Human {
         return "Human{" +
                 "name='" + (name != null ? name : "null") + '\'' +
                 ", surname='" + (surname != null ? surname : "null") + '\'' +
-                ", year=" + (year != 0 ? year : "null") +
+                ", birthDate=" + (birthDate != null ? birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "null") +
                 ", iq=" + (iq != 0 ? iq : "null") +
                 ", schedule=" + (schedule != null ? schedule.toString() : "null") +
                 '}';
