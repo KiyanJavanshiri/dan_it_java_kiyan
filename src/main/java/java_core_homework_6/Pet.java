@@ -1,16 +1,16 @@
 package java_core_homework_6;
 
-import java.util.Arrays;
 import java.util.Objects;
+import java.util.Set;
 
 public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
-    private String[] habits;
+    private Set<String> habits;
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(String nickname, int age, int trickLevel, Set<String> habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -39,7 +39,7 @@ public abstract class Pet {
         return species.getPetSpecies();
     }
 
-    public String[] getHabits() {
+    public Set<String> getHabits() {
         return habits;
     }
 
@@ -47,7 +47,7 @@ public abstract class Pet {
         this.age = age;
     }
 
-    public void setHabits(String[] habits) {
+    public void setHabits(Set<String> habits) {
         this.habits = habits;
     }
 
@@ -91,7 +91,7 @@ public abstract class Pet {
                 ", nickname='" + nickname + '\'' +
                 ", age=" + (age != 0 ? age : "null") +
                 ", trickLevel=" + (trickLevel != 0 ? trickLevel : "null") +
-                ", habits=" + (habits != null ? Arrays.toString(habits) : null) +
+                ", habits=" + (habits != null ? habits.toString() : null) +
                 '}';
     }
 }

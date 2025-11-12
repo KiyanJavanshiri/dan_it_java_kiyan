@@ -1,7 +1,9 @@
 package java_core_homework_6;
 
+import java.util.Set;
+
 public class RoboCat extends Pet {
-    public RoboCat(String nickname, int age, int trickLevel, String[] habits) {
+    public RoboCat(String nickname, int age, int trickLevel, Set<String> habits) {
         super(nickname, age, trickLevel, habits);
         this.setSpecies(Species.ROBOCAT);
     }

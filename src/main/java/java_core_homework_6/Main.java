@@ -1,11 +1,17 @@
 package java_core_homework_6;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
         // Example usage of methods
         String[][] schedule = createSchedule();
+        Set<String> petHabits = new HashSet<>();
+        petHabits.addAll(Arrays.asList("eat", "drink", "sleep"));
 
-        DomesticCat pet = new DomesticCat("Gwen", 2, 70, new String[] {"eat", "drink", "sleep"});
+        DomesticCat pet = new DomesticCat("Gwen", 2, 70, petHabits);
 
         Human person1 = new Human();
         Human person2 = new Man("Jack", "Hamilton", 24);
@@ -18,7 +24,7 @@ public class Main {
         System.out.println("---------------------------");
 
         // Creating family with child
-        DomesticCat jesse = new DomesticCat("Jesse", 2, 70, new String[] {"eat", "drink", "sleep"});
+        DomesticCat jesse = new DomesticCat("Jesse", 2, 70, petHabits);
 
         Human mother = new Woman("Jane", "Karleone", 1975, null, 80, schedule);
         Human father = new Man("Michael", "Jackson", 1974, null, 85, schedule);
