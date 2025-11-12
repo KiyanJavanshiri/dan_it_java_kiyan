@@ -1,18 +1,19 @@
 package java_core_homework_6;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Family {
     private Human mother;
     private Human father;
-    private Human[] children;
+    private List<Human> children;
     private Pet pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = new Human[0];
+        this.children = new ArrayList<>();
 
         this.mother.setFamily(this);
         this.father.setFamily(this);
@@ -30,7 +31,7 @@ public class Family {
         return father;
     }
 
-    public Human[] getChildren() {
+    public List<Human> getChildren() {
         return children;
     }
 
@@ -48,34 +49,26 @@ public class Family {
         this.pet = pet;
     }
 
-    public void setChildren(Human[] children) {
+    public void setChildren(List<Human> children) {
         this.children = children;
     }
 
     public void addChild(Human child) {
-        Human[] newChildrenArr = Arrays.copyOf(this.children, this.children.length + 1);
+        this.children.add(child);
         child.setFamily(this);
-        newChildrenArr[newChildrenArr.length - 1] = child;
-        this.children = newChildrenArr;
     }
 
     public boolean deleteChild(int index) {
         boolean isDeleted = false;
-        if(index >= 0 && index <= this.children.length - 1) {
-            Human[] newChildrenArr = Arrays.copyOf(this.children, this.children.length - 1);
-            for(int i = 0; i < this.children.length; i++) {
-                if(i != index) {
-                    newChildrenArr[i] = this.children[i];
-                }
-            }
-            this.children = newChildrenArr;
+        if(index >= 0 && index <= this.children.size() - 1) {
+            this.children.remove(index);
             isDeleted = true;
         }
         return isDeleted;
     }
 
     public int countFamily() {
-        return 2 + this.children.length;
+        return 2 + this.children.size();
     }
 
 
@@ -89,7 +82,7 @@ public class Family {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mother, father, Arrays.hashCode(children), pet);
+        return Objects.hash(mother, father, children, pet);
     }
 
     @Override
@@ -97,7 +90,7 @@ public class Family {
         return "Family{" +
                 "mother=" + mother +
                 ", father=" + father +
-                ", children=" + Arrays.toString(children) +
+                ", children=" + children.toString() +
                 ", pet=" + pet +
                 '}';
     }
