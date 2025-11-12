@@ -1,13 +1,15 @@
 package java_core_homework_6;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
         // Example usage of methods
-        String[][] schedule = createSchedule();
+        Map<String, String> schedule = createSchedule();
         Set<String> petHabits = new HashSet<>();
         petHabits.addAll(Arrays.asList("eat", "drink", "sleep"));
 
@@ -52,28 +54,21 @@ public class Main {
         System.out.println(family.countFamily());
     }
 
-    public static String[][] createSchedule() {
-        String[][] schedule = new String[7][2];
-        schedule[0][0] = DayOfWeek.MONDAY.name();
-        schedule[0][1] = "Go to gym";
+    public static Map<String, String> createSchedule() {
+        Map<String, String> schedule = new HashMap<>();
+        String[][] DaysWithActivities = {
+                {DayOfWeek.MONDAY.name(), "Go to gym"},
+                {DayOfWeek.TUESDAY.name(), "Attend meeting"},
+                {DayOfWeek.WEDNESDAY.name(), "Work on project"},
+                {DayOfWeek.THURSDAY.name(), "Study Java"},
+                {DayOfWeek.FRIDAY.name(), "Watch movie"},
+                {DayOfWeek.SATURDAY.name(), "Go hiking"},
+                {DayOfWeek.SUNDAY.name(), "Rest"}
+        };
 
-        schedule[1][0] = DayOfWeek.TUESDAY.name();
-        schedule[1][1] = "Attend meeting";
-
-        schedule[2][0] = DayOfWeek.WEDNESDAY.name();
-        schedule[2][1] = "Work on project";
-
-        schedule[3][0] = DayOfWeek.THURSDAY.name();
-        schedule[3][1] = "Study Java";
-
-        schedule[4][0] = DayOfWeek.FRIDAY.name();
-        schedule[4][1] = "Watch movie";
-
-        schedule[5][0] = DayOfWeek.SATURDAY.name();
-        schedule[5][1] = "Go hiking";
-
-        schedule[6][0] = DayOfWeek.SUNDAY.name();
-        schedule[6][1] = "Rest";
+        for (String[] DayWithActivity : DaysWithActivities) {
+            schedule.put(DayWithActivity[0], DayWithActivity[1]);
+        }
 
         return schedule;
     }

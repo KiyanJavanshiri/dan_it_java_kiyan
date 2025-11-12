@@ -1,5 +1,7 @@
 package java_core_homework_6;
 
+import java.util.Map;
+
 public final class Woman extends Human {
     public Woman() {
         super();
@@ -9,7 +11,7 @@ public final class Woman extends Human {
         super(name, surname, year);
     }
 
-    public Woman(String name, String surname, int year, Pet pet, int iq, String[][] schedule) {
+    public Woman(String name, String surname, int year, Pet pet, int iq, Map<String, String> schedule) {
         super(name, surname, year, pet, iq, schedule);
     }
 

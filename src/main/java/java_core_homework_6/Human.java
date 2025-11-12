@@ -1,6 +1,6 @@
 package java_core_homework_6;
 
-import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
 public class Human {
@@ -10,7 +10,7 @@ public class Human {
     private int year;
     private int iq;
     private Pet pet;
-    private String[][] schedule;
+    private Map<String, String> schedule;
 
     public Human() {
 
@@ -22,7 +22,7 @@ public class Human {
         this.year = year;
     }
 
-    public Human(String name, String surname, int year, Pet pet, int iq, String[][] schedule) {
+    public Human(String name, String surname, int year, Pet pet, int iq, Map<String, String> schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -70,7 +70,7 @@ public class Human {
         return pet;
     }
 
-    public String[][] getSchedule() {
+    public Map<String, String> getSchedule() {
         return schedule;
     }
 
@@ -98,7 +98,7 @@ public class Human {
         this.year = year;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(Map<String, String> schedule) {
         this.schedule = schedule;
     }
 
@@ -115,7 +115,7 @@ public class Human {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, year, iq, pet, Arrays.deepHashCode(schedule));
+        return Objects.hash(name, surname, year, iq, pet, schedule);
     }
 
     @Override
@@ -125,7 +125,7 @@ public class Human {
                 ", surname='" + (surname != null ? surname : "null") + '\'' +
                 ", year=" + (year != 0 ? year : "null") +
                 ", iq=" + (iq != 0 ? iq : "null") +
-                ", schedule=" + (schedule != null ? Arrays.deepToString(schedule) : "null") +
+                ", schedule=" + (schedule != null ? schedule.toString() : "null") +
                 '}';
     }
 }
