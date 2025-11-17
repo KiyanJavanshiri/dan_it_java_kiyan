@@ -77,12 +77,17 @@ public class Family {
         String childrenPrettyFormatted = "";
         String petsPrettyFormatted = "";
 
-        for (Human child : children) {
-            childrenPrettyFormatted += "      " + child.prettyFormat() + (!(children.indexOf(child) == children.size() - 1) ? "\n" : "");
+        if(children != null) {
+            for (Human child : children) {
+                childrenPrettyFormatted += "      " + child.prettyFormat() + (!(children.indexOf(child) == children.size() - 1) ? "\n" : "");
+            }
         }
-        for (Pet eachPet : pet) {
-            petsPrettyFormatted += eachPet.prettyFormat() + (pet.size() > 1 ? ", " : "");
+        if(pet != null) {
+            for (Pet eachPet : pet) {
+                petsPrettyFormatted += eachPet.prettyFormat() + (pet.size() > 1 ? ", " : "");
+            }
         }
+
         return "family: \n" +
                 "   mother: " + mother.prettyFormat() + ",\n" +
                 "   father: " + father.prettyFormat() + ",\n" +

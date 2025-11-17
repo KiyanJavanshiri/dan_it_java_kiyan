@@ -11,6 +11,10 @@ import java.util.Set;
 public class FamilyController {
     private FamilyService familyService = new FamilyService();
 
+    public void addTestFamilies() {
+        this.familyService.addTestFamilies();
+    }
+
     public List<Family> getAllFamilies() {
         return familyService.getAllFamilies();
     }

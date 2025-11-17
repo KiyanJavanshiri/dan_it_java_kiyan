@@ -15,12 +15,16 @@ import java.util.stream.Collectors;
 public class FamilyService {
     private CollectionFamilyDao familyDao = new CollectionFamilyDao();
 
+    public void addTestFamilies() {
+        this.familyDao.addTestFamilies();
+    }
+
     public List<Family> getAllFamilies() {
         return familyDao.getAllFamilies();
     }
 
     public void displayAllFamilies() {
-        familyDao.getAllFamilies().forEach((el -> el.prettyFormat()));
+        familyDao.getAllFamilies().forEach((el) -> System.out.println("Family №" + (this.getAllFamilies().indexOf(el) + 1) + "\n" + el.prettyFormat()));
     }
 
     public List<Family> getFamiliesBiggerThan(int count) {

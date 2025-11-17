@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionFamilyDao implements FamilyDao {
-    private List<Family> families = addFamilies();
+    private List<Family> families = new ArrayList<>();
 
-    private List<Family> addFamilies() {
-        List<Family> familyList = new ArrayList<>();
+    public void addTestFamilies() {
         Human mother1 = new Woman("Anna", "Koval");
         Human father1 = new Man("Oleh", "Koval");
         Family f1 = new Family(mother1, father1);
@@ -34,12 +33,11 @@ public class CollectionFamilyDao implements FamilyDao {
         Family f5 = new Family(mother5, father5);
         f5.addChild(new Human("Yulia", "Hrytsenko"));
 
-        familyList.add(f1);
-        familyList.add(f2);
-        familyList.add(f3);
-        familyList.add(f4);
-        familyList.add(f5);
-        return familyList;
+        families.add(f1);
+        families.add(f2);
+        families.add(f3);
+        families.add(f4);
+        families.add(f5);
     }
 
     @Override
