@@ -2,52 +2,98 @@ package java_core_homework_8.services;
 
 import java_core_homework_8.Family;
 import java_core_homework_8.Human;
+import java_core_homework_8.Pet;
 import java_core_homework_8.dao.CollectionFamilyDao;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FamilyService {
     private CollectionFamilyDao familyDao = new CollectionFamilyDao();
 
-    List<Family> getAllFamilies() {
-        return this.familyDao.getAllFamilies();
+    public List<Family> getAllFamilies() {
+        return familyDao.getAllFamilies();
     }
 
-    void displayAllFamilies() {
-        System.out.println(this.familyDao.getAllFamilies());
+    public void displayAllFamilies() {
+        familyDao.getAllFamilies().forEach((el -> System.out.println(el)));
     }
 
-    List<Family> getFamiliesBiggerThan(int count) {
-        return this.familyDao.getFamiliesBiggerThan(count);
+    public List<Family> getFamiliesBiggerThan(int count) {
+        return familyDao.getAllFamilies().stream()
+                .filter(family -> family.countFamily() > count)
+                .collect(Collectors.toList());
     }
 
-    List<Family> getFamiliesLessThan(int count) {
-        return this.familyDao.getFamiliesLessThan(count);
+    public List<Family> getFamiliesLessThan(int count) {
+        return familyDao.getAllFamilies().stream()
+                .filter(family -> family.countFamily() < count)
+                .collect(Collectors.toList());
     }
 
-    List<Family> countFamiliesWithMemberNumber(int count) {
-        return this.familyDao.countFamiliesWithMemberNumber(count);
+    public int countFamiliesWithMemberNumber(int count) {
+        return familyDao.getAllFamilies().stream()
+                .filter(family -> family.countFamily() == count)
+                .collect(Collectors.toList()).toArray().length;
     }
 
-    void createNewFamily(Human father, Human mother) {
-        Family newFamily = new Family(father, mother);
-        this.familyDao.saveFamily(newFamily);
+    public void createNewFamily(Human mother, Human father) {
+        Family family = new Family(mother, father);
+        familyDao.saveFamily(family);
     }
 
-    boolean deleteFamilyByIndex(int index) {
+    public boolean deleteFamilyByIndex(int index) {
         return this.familyDao.deleteFamily(index);
     }
 
-    Family bornChild(Family family, String fatherName, String motherName) {
-        Human newBornChild = new Human("Jason", "Momoa");
-        return this.familyDao.addChildToFamily(newBornChild, fatherName, motherName);
+    public Family bornChild(Family family, String maleName, String femaleName) {
+        Human child;
+
+        if (maleName.equals("John"))
+            child = new Human(maleName, family.getFather().getSurname());
+        else
+            child = new Human(femaleName, family.getFather().getSurname());
+
+        family.addChild(child);
+        familyDao.saveFamily(family);
+        return family;
     }
 
-    Family adoptChild(Family family, Human child) {
-        return this.familyDao.addChildToFamily(child, family.getFather().getName(), family.getMother().getName());
+    public Family adoptChild(Family family, Human child) {
+        family.addChild(child);
+        familyDao.saveFamily(family);
+        return family;
     }
 
-//    void deleteAllChildrenOlderThen(int old) {
-//        this.familyDao.deleteAllChildrenOlderThen(old);
-//    }
+    public void deleteAllChildrenOlderThan(int age) {
+        for (Family family : familyDao.getAllFamilies()) {
+            List<Human> filteredChildren = family.getChildren().stream().filter((child) -> (LocalDateTime.now().getYear() - child.getBirthDate().getYear()) <= age).collect(Collectors.toList());
+            family.setChildren(filteredChildren);
+            familyDao.saveFamily(family);
+        }
+    }
+
+    public int count() {
+        return familyDao.getAllFamilies().size();
+    }
+
+    public Family getFamilyById(int index) {
+        return familyDao.getFamilyByIndex(index);
+    }
+
+    public Set<Pet> getPets(int index) {
+        Family family = familyDao.getFamilyByIndex(index);
+        return family != null ? family.getPet() : null;
+    }
+
+    public void addPet(int index, Pet pet) {
+        Family family = familyDao.getFamilyByIndex(index);
+        if (family != null) {
+            family.getPet().add(pet);
+            familyDao.saveFamily(family);
+        }
+    }
+
 }
