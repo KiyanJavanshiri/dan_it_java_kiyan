@@ -6,6 +6,8 @@ import java_core_homework_8.Pet;
 import java_core_homework_8.dao.CollectionFamilyDao;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -91,7 +93,11 @@ public class FamilyService {
     public void addPet(int index, Pet pet) {
         Family family = familyDao.getFamilyByIndex(index);
         if (family != null) {
-            family.getPet().add(pet);
+            if(family.getPet() != null) {
+                family.getPet().add(pet);
+            } else {
+                family.setPet(new HashSet<>(Arrays.asList(pet)));
+            }
             familyDao.saveFamily(family);
         }
     }
