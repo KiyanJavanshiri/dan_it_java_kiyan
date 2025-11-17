@@ -39,6 +39,16 @@ public abstract class Pet {
         return species.getPetSpecies();
     }
 
+    public String prettyFormat() {
+        return  "{" +
+                "species='" + species.getPetSpecies() + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + (age != 0 ? age : "null") +
+                ", trickLevel=" + (trickLevel != 0 ? trickLevel : "null") +
+                ", habits=" + (habits != null ? habits.toString() : null) +
+                '}';
+    }
+
     public Set<String> getHabits() {
         return habits;
     }

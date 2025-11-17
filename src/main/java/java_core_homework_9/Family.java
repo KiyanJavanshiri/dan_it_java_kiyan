@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Family {
     private Human mother;
@@ -72,7 +73,22 @@ public class Family {
         return 2 + this.children.size();
     }
 
+    public String prettyFormat() {
+        String childrenPrettyFormatted = "";
+        String petsPrettyFormatted = "";
 
+        for (Human child : children) {
+            childrenPrettyFormatted += "      " + child.prettyFormat() + (!(children.indexOf(child) == children.size() - 1) ? "\n" : "");
+        }
+        for (Pet eachPet : pet) {
+            petsPrettyFormatted += eachPet.prettyFormat() + (pet.size() > 1 ? ", " : "");
+        }
+        return "family: \n" +
+                "   mother: " + mother.prettyFormat() + ",\n" +
+                "   father: " + father.prettyFormat() + ",\n" +
+                "   children: \n" + childrenPrettyFormatted + "\n" +
+                "   pets: " + "[" + petsPrettyFormatted + "]";
+    }
 
     @Override
     public boolean equals(Object o) {

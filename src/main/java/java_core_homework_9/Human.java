@@ -60,6 +60,16 @@ public class Human {
         return "Period of living:\nYears: " + periodOfLiving.getYears() + "\n" + "Months: " + periodOfLiving.getMonths() + "\n" + "Days: " + periodOfLiving.getDays();
     }
 
+    public String prettyFormat() {
+        return "{" +
+                "name='" + (name != null ? name : "null") + '\'' +
+                ", surname='" + (surname != null ? surname : "null") + '\'' +
+                ", birthDate=" + (birthDate != null ? birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "null") +
+                ", iq=" + (iq != 0 ? iq : "null") +
+                ", schedule=" + (schedule != null ? schedule.toString() : "null") +
+                '}';
+    }
+
 
     public String getSurname() {
         return surname;
