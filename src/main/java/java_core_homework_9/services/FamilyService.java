@@ -20,7 +20,7 @@ public class FamilyService {
     }
 
     public void displayAllFamilies() {
-        familyDao.getAllFamilies().forEach((el -> System.out.println(el)));
+        familyDao.getAllFamilies().forEach((el -> el.prettyFormat()));
     }
 
     public List<Family> getFamiliesBiggerThan(int count) {
