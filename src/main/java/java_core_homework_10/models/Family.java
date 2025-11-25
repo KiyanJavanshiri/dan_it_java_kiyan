@@ -1,11 +1,12 @@
 package java_core_homework_10.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class Family {
+public class Family implements Serializable {
     private Human mother;
     private Human father;
     private List<Human> children;

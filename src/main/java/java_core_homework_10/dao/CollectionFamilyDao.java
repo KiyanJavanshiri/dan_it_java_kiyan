@@ -6,13 +6,62 @@ import java_core_homework_10.models.Human;
 import java_core_homework_10.models.Man;
 import java_core_homework_10.models.Woman;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionFamilyDao implements FamilyDao {
-    private List<Family> families = new ArrayList<>();
+    private List<Family> families;
 
-    public void addTestFamilies() {
+    public CollectionFamilyDao() {
+        init();
+    }
+
+    public void init() {
+        String rootPath = "src/main/java/java_core_homework_10/db/";
+        String filePath = "families.dat";
+        File databaseFile = new File(rootPath + filePath);
+
+        if(!databaseFile.exists()) {
+            this.families = new ArrayList<>();
+            return;
+        }
+
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(rootPath + filePath))) {
+            this.families = (List<Family>) inputStream.readObject();
+        } catch (EOFException ex) {
+            this.families = new ArrayList<>();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void loadData(List<Family> families) {
+        String rootPath = "src/main/java/java_core_homework_10/db/";
+        String filePath = "families.dat";
+
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(rootPath + filePath))) {
+            outputStream.writeObject(families);
+            this.families = families;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void saveFamiliesToDB() {
+        String rootPath = "src/main/java/java_core_homework_10/db/";
+        String filePath = "families.dat";
+
+        try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(rootPath + filePath))) {
+            outputStream.writeObject(families);
+            System.out.println("Families saved to DB successfully");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Family> addTestFamilies() {
+        List<Family> familyList = new ArrayList<>();
         Human mother1 = new Woman("Anna", "Koval");
         Human father1 = new Man("Oleh", "Koval");
         Family f1 = new Family(mother1, father1);
@@ -37,11 +86,13 @@ public class CollectionFamilyDao implements FamilyDao {
         Family f5 = new Family(mother5, father5);
         f5.addChild(new Human("Yulia", "Hrytsenko"));
 
-        families.add(f1);
-        families.add(f2);
-        families.add(f3);
-        families.add(f4);
-        families.add(f5);
+        familyList.add(f1);
+        familyList.add(f2);
+        familyList.add(f3);
+        familyList.add(f4);
+        familyList.add(f5);
+
+        return familyList;
     }
 
     @Override

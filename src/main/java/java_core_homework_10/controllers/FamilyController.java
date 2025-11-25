@@ -11,8 +11,8 @@ import java.util.Set;
 public class FamilyController {
     private FamilyService familyService = new FamilyService();
 
-    public void addTestFamilies() {
-        this.familyService.addTestFamilies();
+    public List<Family> addTestFamilies() {
+        return this.familyService.addTestFamilies();
     }
 
     public List<Family> getAllFamilies() {
@@ -69,5 +69,11 @@ public class FamilyController {
 
     public void addPet(int index, Pet pet) {
         familyService.addPet(index, pet);
+    }
+
+    public void loadData(List<Family> families) { familyService.loadData(families); }
+
+    public void saveFamiliesToDB() {
+        this.familyService.saveFamiliesToDB();
     }
 }

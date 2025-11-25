@@ -35,7 +35,7 @@ public class ApplicationConsole {
     }
 
     private static void listOfCommands() {
-        System.out.println("1. Fill with test data");
+        System.out.println("1. Load test data to DB");
         System.out.println("2. Display all families");
         System.out.println("3. Display families where the number of people is greater than the specified value");
         System.out.println("4. Display families where the number of people is less than the specified value");
@@ -44,14 +44,14 @@ public class ApplicationConsole {
         System.out.println("7. Delete a family by index in the general list");
         System.out.println("8. Edit a family by index:");
         System.out.println("9. Delete all children older than a specified age");
+        System.out.println("10. Save data to DB");
         System.out.println("0. Exit");
     }
 
     private static void CommandImplementation(String command) {
         switch (command) {
             case "1":
-                controller.addTestFamilies();
-                System.out.println("Test families has been added!");
+                controller.loadData(controller.addTestFamilies());
                 break;
             case "2":
                 if(controller.getAllFamilies().isEmpty()) {
@@ -130,6 +130,11 @@ public class ApplicationConsole {
                 controller.deleteAllChildrenOlderThan(age);
                 System.out.println("Operation completed.");
                 break;
+            case "10":
+                controller.saveFamiliesToDB();
+                break;
+            default:
+                System.out.println("Please enter option number, that provided to you");
         }
     }
 

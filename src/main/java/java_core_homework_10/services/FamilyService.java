@@ -17,8 +17,8 @@ public class FamilyService {
     private CollectionFamilyDao familyDao = new CollectionFamilyDao();
     private final int MAX_FAMILY_SIZE = 3;
 
-    public void addTestFamilies() {
-        this.familyDao.addTestFamilies();
+    public List<Family> addTestFamilies() {
+        return this.familyDao.addTestFamilies();
     }
 
     public List<Family> getAllFamilies() {
@@ -114,5 +114,13 @@ public class FamilyService {
             }
             familyDao.saveFamily(family);
         }
+    }
+
+    public void loadData(List<Family> families) {
+        this.familyDao.loadData(families);
+    }
+
+    public void saveFamiliesToDB() {
+        this.familyDao.saveFamiliesToDB();
     }
 }
