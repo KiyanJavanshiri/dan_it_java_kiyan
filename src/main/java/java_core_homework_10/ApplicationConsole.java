@@ -122,6 +122,7 @@ public class ApplicationConsole {
                         break;
                     }
                 }
+                break;
             case "8":
                 editFamilyMenu();
                 break;
