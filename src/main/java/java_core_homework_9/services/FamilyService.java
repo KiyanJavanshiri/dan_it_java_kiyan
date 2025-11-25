@@ -1,6 +1,7 @@
 package java_core_homework_9.services;
 
 import java_core_homework_9.Family;
+import java_core_homework_9.FamilyOverflowException;
 import java_core_homework_9.Human;
 import java_core_homework_9.Pet;
 import java_core_homework_9.dao.CollectionFamilyDao;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class FamilyService {
     private CollectionFamilyDao familyDao = new CollectionFamilyDao();
+    private final int MAX_FAMILY_SIZE = 3;
 
     public void addTestFamilies() {
         this.familyDao.addTestFamilies();
@@ -55,6 +57,10 @@ public class FamilyService {
     }
 
     public Family bornChild(Family family, String maleName, String femaleName) {
+        if (family.countFamily() > MAX_FAMILY_SIZE) {
+            throw new FamilyOverflowException("Family size limit exceeded. Cannot have more children. Current size: " + family.countFamily());
+        }
+
         Human child;
 
         if (maleName.equals("John"))
@@ -68,6 +74,10 @@ public class FamilyService {
     }
 
     public Family adoptChild(Family family, Human child) {
+        if (family.countFamily() > MAX_FAMILY_SIZE) {
+            throw new FamilyOverflowException("Family size limit exceeded. Cannot adopt a child. Current size: " + family.countFamily());
+        }
+
         family.addChild(child);
         familyDao.saveFamily(family);
         return family;
