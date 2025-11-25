@@ -1,6 +1,10 @@
-package java_core_homework_9.dao;
+package java_core_homework_10.dao;
 
-import java_core_homework_9.*;
+import java_core_homework_10.interfaces.FamilyDao;
+import java_core_homework_10.models.Family;
+import java_core_homework_10.models.Human;
+import java_core_homework_10.models.Man;
+import java_core_homework_10.models.Woman;
 
 import java.util.ArrayList;
 import java.util.List;

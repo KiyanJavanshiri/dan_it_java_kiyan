@@ -1,4 +1,7 @@
-package java_core_homework_9;
+package java_core_homework_10.models;
+
+import java_core_homework_10.interfaces.Foulable;
+import java_core_homework_10.enums.Species;
 
 import java.util.Set;
 

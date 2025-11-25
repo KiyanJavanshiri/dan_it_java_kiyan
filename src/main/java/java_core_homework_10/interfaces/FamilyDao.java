@@ -1,4 +1,6 @@
-package java_core_homework_9;
+package java_core_homework_10.interfaces;
+
+import java_core_homework_10.models.Family;
 
 import java.util.List;
 

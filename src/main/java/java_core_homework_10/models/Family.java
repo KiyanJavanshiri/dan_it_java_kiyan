@@ -1,10 +1,9 @@
-package java_core_homework_9;
+package java_core_homework_10.models;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Family {
     private Human mother;

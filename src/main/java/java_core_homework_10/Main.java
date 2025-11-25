@@ -1,6 +1,6 @@
-package java_core_homework_9;
+package java_core_homework_10;
 
-import java_core_homework_9.controllers.FamilyController;
+import java_core_homework_10.enums.DayOfWeek;
 
 import java.util.Arrays;
 import java.util.Set;
