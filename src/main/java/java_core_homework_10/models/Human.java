@@ -1,12 +1,13 @@
-package java_core_homework_9;
+package java_core_homework_10.models;
 
+import java.io.Serializable;
 import java.time.Period;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Serializable {
     private String name;
     private Family family;
     private String surname;

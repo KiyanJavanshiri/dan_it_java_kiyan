@@ -1,9 +1,12 @@
-package java_core_homework_9;
+package java_core_homework_10.models;
 
+import java_core_homework_10.enums.Species;
+
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class Pet {
+public abstract class Pet implements Serializable {
     private Species species;
     private String nickname;
     private int age;

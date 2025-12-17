@@ -1,4 +1,4 @@
-package java_core_homework_9;
+package java_core_homework_10.models;
 
 import java.util.Map;
 

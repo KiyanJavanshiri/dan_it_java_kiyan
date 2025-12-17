@@ -1,10 +1,10 @@
-package java_core_homework_9.services;
+package java_core_homework_10.services;
 
-import java_core_homework_9.Family;
-import java_core_homework_9.FamilyOverflowException;
-import java_core_homework_9.Human;
-import java_core_homework_9.Pet;
-import java_core_homework_9.dao.CollectionFamilyDao;
+import java_core_homework_10.models.Family;
+import java_core_homework_10.exceptions.FamilyOverflowException;
+import java_core_homework_10.models.Human;
+import java_core_homework_10.models.Pet;
+import java_core_homework_10.dao.CollectionFamilyDao;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -17,8 +17,8 @@ public class FamilyService {
     private CollectionFamilyDao familyDao = new CollectionFamilyDao();
     private final int MAX_FAMILY_SIZE = 3;
 
-    public void addTestFamilies() {
-        this.familyDao.addTestFamilies();
+    public List<Family> addTestFamilies() {
+        return this.familyDao.addTestFamilies();
     }
 
     public List<Family> getAllFamilies() {
@@ -114,5 +114,13 @@ public class FamilyService {
             }
             familyDao.saveFamily(family);
         }
+    }
+
+    public void loadData(List<Family> families) {
+        this.familyDao.loadData(families);
+    }
+
+    public void saveFamiliesToDB() {
+        this.familyDao.saveFamiliesToDB();
     }
 }

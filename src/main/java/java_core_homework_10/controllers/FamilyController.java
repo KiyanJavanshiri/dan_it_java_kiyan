@@ -1,9 +1,9 @@
-package java_core_homework_9.controllers;
+package java_core_homework_10.controllers;
 
-import java_core_homework_9.Family;
-import java_core_homework_9.Human;
-import java_core_homework_9.Pet;
-import java_core_homework_9.services.FamilyService;
+import java_core_homework_10.models.Family;
+import java_core_homework_10.models.Human;
+import java_core_homework_10.models.Pet;
+import java_core_homework_10.services.FamilyService;
 
 import java.util.List;
 import java.util.Set;
@@ -11,8 +11,8 @@ import java.util.Set;
 public class FamilyController {
     private FamilyService familyService = new FamilyService();
 
-    public void addTestFamilies() {
-        this.familyService.addTestFamilies();
+    public List<Family> addTestFamilies() {
+        return this.familyService.addTestFamilies();
     }
 
     public List<Family> getAllFamilies() {
@@ -69,5 +69,11 @@ public class FamilyController {
 
     public void addPet(int index, Pet pet) {
         familyService.addPet(index, pet);
+    }
+
+    public void loadData(List<Family> families) { familyService.loadData(families); }
+
+    public void saveFamiliesToDB() {
+        this.familyService.saveFamiliesToDB();
     }
 }
